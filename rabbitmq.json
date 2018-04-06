@@ -1,0 +1,104 @@
+{
+    "bindings": [
+        {
+            "arguments": {},
+            "destination": "firehose.topic",
+            "destination_type": "exchange",
+            "routing_key": "#",
+            "source": "amq.rabbitmq.trace",
+            "vhost": "/"
+        },
+        {
+            "arguments": {},
+            "destination": "midpoint_hr",
+            "destination_type": "queue",
+            "routing_key": "midpoint_hr",
+            "source": "midpoint",
+            "vhost": "/"
+        }
+    ],
+    "exchanges": [
+        {
+            "arguments": {},
+            "auto_delete": false,
+            "durable": true,
+            "internal": false,
+            "name": "midpoint",
+            "type": "topic",
+            "vhost": "/"
+        },
+        {
+            "arguments": {},
+            "auto_delete": false,
+            "durable": true,
+            "internal": false,
+            "name": "firehose.topic",
+            "type": "topic",
+            "vhost": "/"
+        }
+    ],
+    "parameters": [],
+    "permissions": [
+        {
+            "configure": ".*",
+            "read": ".*",
+            "user": "guest",
+            "vhost": "/",
+            "write": ".*"
+        },
+        {
+            "configure": ".*",
+            "read": ".*",
+            "user": "mysql",
+            "vhost": "/",
+            "write": ".*"
+        },
+        {
+            "configure": "amq.*",
+            "read": "amq.*",
+            "user": "midpoint",
+            "vhost": "/",
+            "write": "amq.*"
+        }
+    ],
+    "policies": [],
+    "queues": [
+        {
+            "arguments": {},
+            "auto_delete": false,
+            "durable": true,
+            "name": "firehose",
+            "vhost": "/"
+        },
+        {
+            "arguments": {},
+            "auto_delete": false,
+            "durable": true,
+            "name": "midpoint_hr",
+            "vhost": "/"
+        }
+    ],
+    "rabbit_version": "3.3.5",
+    "users": [
+        {
+            "name": "midpoint",
+            "password_hash": "NPRHRH/7sII4hjRpMjx7nGv8Hts=",
+            "tags": ""
+        },
+        {
+            "name": "mysql",
+            "password_hash": "F/ngi0JcvYcXYbloSEISdlYqKfo=",
+            "tags": ""
+        },
+        {
+            "name": "guest",
+            "password_hash": "4e2kx67rm/QsibQrLcfxyMQMDv4=",
+            "tags": "administrator"
+        }
+    ],
+    "vhosts": [
+        {
+            "name": "/"
+        }
+    ]
+}
