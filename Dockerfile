@@ -2,8 +2,6 @@ FROM centos:latest
 MAINTAINER  ethan@unc.edu ekromhout@gmail.com
 RUN yum -y install epel-release && yum -y update && yum -y install pwgen rabbitmq-server supervisor wget
 ENV RABBITMQ_LOGS=- RABBITMQ_SASL_LOGS=-
-#ENV RABBITMQ_USER=tier
-#ENV RABBITMQ_PASS=tier
 RUN /usr/lib/rabbitmq/bin/rabbitmq-plugins enable rabbitmq_management
 RUN /usr/lib/rabbitmq/bin/rabbitmq-plugins enable rabbitmq_tracing
 RUN sed -i s/'%% {load_definitions, .*"},'/'{load_definitions, "\/etc\/rabbitmq\/rabbitmq.json"}'/ /etc/rabbitmq/rabbitmq.config
@@ -19,8 +17,11 @@ RUN wget -nv --no-cookies --no-check-certificate --header "Cookie: oraclelicense
      alternatives --install /usr/bin/javac javac $JAVA_HOME/bin/javac 200000
 
 RUN sed -i s/'nodaemon=false'/'nodaemon=true'/ /etc/supervisord.conf
+COPY rabbitmqctl.sh /root/
+COPY rabbittrace-0.1-jar-with-dependencies.jar /root/
 COPY trace.ini /etc/supervisord.d/
 COPY rabbitmq.ini /etc/supervisord.d/
+COPY rabbitmqctl.ini /etc/supervisord.d/
 COPY rabbitmq.json /etc/rabbitmq/
 COPY rabbittrace-0.1-jar-with-dependencies.jar /root/
 EXPOSE 5672 15672 4369 25672
