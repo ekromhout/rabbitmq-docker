@@ -16,6 +16,14 @@
             "source": "midpoint",
             "vhost": "/"
         },
+        {
+            "arguments": {},
+            "destination": "sor_person",
+            "destination_type": "queue",
+            "routing_key": "sor_person",
+            "source": "sor",
+            "vhost": "/"
+        },
 	{
             "arguments": {},
             "destination": "ACCT101",
@@ -72,6 +80,15 @@
             "auto_delete": false,
             "durable": true,
             "internal": false,
+            "name": "sor",
+            "type": "topic",
+            "vhost": "/"
+        },
+        {
+            "arguments": {},
+            "auto_delete": false,
+            "durable": true,
+            "internal": false,
             "name": "firehose.topic",
             "type": "topic",
             "vhost": "/"
@@ -101,11 +118,11 @@
             "write": ".*"
         },
         {
-            "configure": "amq.*",
-            "read": "amq.*",
+            "configure": ".*",
+            "read": ".*",
             "user": "midpoint",
             "vhost": "/",
-            "write": "amq.*"
+            "write": ".*"
         }
     ],
     "policies": [],
@@ -122,6 +139,13 @@
             "auto_delete": false,
             "durable": true,
             "name": "midpoint_hr",
+            "vhost": "/"
+        },
+        {
+            "arguments": {},
+            "auto_delete": false,
+            "durable": true,
+            "name": "sor_person",
             "vhost": "/"
         },
 	       {
