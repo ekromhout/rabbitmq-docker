@@ -15,6 +15,46 @@
             "routing_key": "midpoint_hr",
             "source": "midpoint",
             "vhost": "/"
+        },
+	{
+            "arguments": {},
+            "destination": "ACCT101",
+            "destination_type": "queue",
+            "routing_key": "basis.courses.ACCT101",
+            "source": "amq.topic",
+            "vhost": "/"
+        },
+        {
+            "arguments": {},
+            "destination": "CS101",
+            "destination_type": "queue",
+            "routing_key": "basis.courses.CS101",
+            "source": "amq.topic",
+            "vhost": "/"
+        },
+        {
+            "arguments": {},
+            "destination": "CS102",
+            "destination_type": "queue",
+            "routing_key": "basis.courses.CS102",
+            "source": "amq.topic",
+            "vhost": "/"
+        },
+        {
+            "arguments": {},
+            "destination": "MATH101",
+            "destination_type": "queue",
+            "routing_key": "basis.courses.MATH101",
+            "source": "amq.topic",
+            "vhost": "/"
+        },
+        {
+            "arguments": {},
+            "destination": "TIER101",
+            "destination_type": "queue",
+            "routing_key": "basis.courses.TIER101",
+            "source": "amq.topic",
+            "vhost": "/"
         }
     ],
     "exchanges": [
@@ -54,6 +94,13 @@
             "write": ".*"
         },
         {
+            "configure": ".*",
+            "read": ".*",
+            "user": "sis_user",
+            "vhost": "/",
+            "write": ".*"
+        },
+        {
             "configure": "amq.*",
             "read": "amq.*",
             "user": "midpoint",
@@ -76,6 +123,41 @@
             "durable": true,
             "name": "midpoint_hr",
             "vhost": "/"
+        },
+	       {
+            "arguments": {},
+            "auto_delete": false,
+            "durable": true,
+            "name": "CS102",
+            "vhost": "/"
+        },
+        {
+            "arguments": {},
+            "auto_delete": false,
+            "durable": true,
+            "name": "CS101",
+            "vhost": "/"
+        },
+        {
+            "arguments": {},
+            "auto_delete": false,
+            "durable": true,
+            "name": "MATH101",
+            "vhost": "/"
+        },
+        {
+            "arguments": {},
+            "auto_delete": false,
+            "durable": true,
+            "name": "ACCT101",
+            "vhost": "/"
+        },
+        {
+            "arguments": {},
+            "auto_delete": false,
+            "durable": true,
+            "name": "TIER101",
+            "vhost": "/"
         }
     ],
     "rabbit_version": "3.3.5",
@@ -89,6 +171,11 @@
             "name": "mysql",
             "password_hash": "F/ngi0JcvYcXYbloSEISdlYqKfo=",
             "tags": ""
+        },
+	{
+            "name": "sis_user",
+            "password_hash": "5x3yS5eXea8iSGejDoh4L9Ex2xk=",
+            "tags": "administrator"
         },
         {
             "name": "guest",
