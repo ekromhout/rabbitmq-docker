@@ -5,9 +5,10 @@ ENV RABBITMQ_LOGS=- RABBITMQ_SASL_LOGS=-
 RUN /usr/lib/rabbitmq/bin/rabbitmq-plugins enable rabbitmq_management
 RUN /usr/lib/rabbitmq/bin/rabbitmq-plugins enable rabbitmq_tracing
 RUN sed -i s/'%% {load_definitions, .*"},'/'{load_definitions, "\/etc\/rabbitmq\/rabbitmq.json"}'/ /etc/rabbitmq/rabbitmq.config
-ENV JAVA_VERSION=8u162 
-ENV BUILD_VERSION=b12 
-ENV JAVA_BUNDLE_ID=0da788060d494f5095bf8624735fa2f1
+ENV JAVA_VERSION=8u171 
+ENV BUILD_VERSION=b11 
+ENV JAVA_BUNDLE_ID=512cd62ec5174c3487ac17c61aaa89e8
+
 #     ==> By uncommenting these next 6 lines, you agree to the Oracle Binary Code License Agreement for Java SE (http://www.oracle.com/technetwork/java/javase/terms/license/index.html)
 RUN wget -nv --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/$JAVA_VERSION-$BUILD_VERSION/$JAVA_BUNDLE_ID/jdk-$JAVA_VERSION-linux-x64.rpm" -O /tmp/jdk-$JAVA_VERSION-$BUILD_VERSION-linux-x64.rpm && \
      yum -y install /tmp/jdk-$JAVA_VERSION-$BUILD_VERSION-linux-x64.rpm && \
